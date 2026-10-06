@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090d12">
+  <meta name="description" content="DocuView — a fast, private document and PDF reader for the browser.">
+  <title>DocuView — Document Reader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <div class="app" id="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-icon">D</div>
+        <div><strong>DocuView</strong><span>Private document reader</span></div>
+      </div>
+      <div class="top-actions">
+        <button class="toolbar-btn" id="openButton" type="button">＋ Open document</button>
+        <button class="icon-btn" id="themeButton" type="button" title="Toggle theme">◐</button>
+      </div>
+      <input id="fileInput" type="file" accept=".pdf,application/pdf" hidden>
+    </header>
+
+    <main class="workspace">
+      <aside class="sidebar" id="sidebar">
+        <div class="side-head">
+          <div><span class="eyebrow">DOCUMENT</span><h1 id="fileName">No document</h1></div>
+          <button class="icon-btn mobile-only" id="closeSidebar" type="button">×</button>
+        </div>
+        <div class="doc-meta" id="docMeta">Open a PDF to start reading.</div>
+        <div class="side-tools">
+          <label class="search-input"><span>⌕</span><input id="searchInput" type="search" placeholder="Search in document"></label>
+          <button class="side-action" id="searchButton" type="button">Search text</button>
+        </div>
+        <div class="thumbs" id="thumbs">
+          <div class="sidebar-empty"><span>▧</span><strong>Your pages appear here</strong><small>Thumbnails and page navigation will be available after you open a PDF.</small></div>
+        </div>
+      </aside>
+
+      <section class="reader" id="reader">
+        <div class="reader-toolbar">
+          <div class="toolbar-group">
+            <button class="icon-btn" id="sidebarButton" type="button" title="Pages">☷</button>
+            <button class="icon-btn" id="prevButton" type="button" title="Previous page">‹</button>
+            <label class="page-control"><input id="pageInput" type="number" min="1" value="1"><span>/ <b id="pageCount">0</b></span></label>
+            <button class="icon-btn" id="nextButton" type="button" title="Next page">›</button>
+          </div>
+          <div class="toolbar-group">
+            <button class="icon-btn" id="zoomOut" type="button" title="Zoom out">−</button>
+            <button class="zoom-readout" id="zoomReadout" type="button" title="Reset zoom">100%</button>
+            <button class="icon-btn" id="zoomIn" type="button" title="Zoom in">＋</button>
+            <button class="icon-btn" id="fitButton" type="button" title="Fit to width">↔</button>
+            <button class="icon-btn" id="rotateButton" type="button" title="Rotate">↻</button>
+            <button class="icon-btn" id="fullscreenButton" type="button" title="Fullscreen">⛶</button>
+            <button class="icon-btn" id="printButton" type="button" title="Print">⎙</button>
+            <button class="icon-btn" id="downloadButton" type="button" title="Download">⇩</button>
+          </div>
+        </div>
+
+        <div class="reader-stage" id="readerStage">
+          <div class="welcome" id="welcome">
+            <div class="welcome-art"><div class="doc-shape"><span>PDF</span></div></div>
+            <span class="eyebrow">YOUR PRIVATE READER</span>
+            <h2>Read without the clutter.</h2>
+            <p>Open a PDF and get a focused reading space with thumbnails, search, zoom, rotation and fullscreen.</p>
+            <button class="primary-btn" id="welcomeOpen" type="button">Open a PDF</button>
+            <div class="drop-hint">or drag a PDF anywhere onto this window</div>
+          </div>
+          <div class="page-wrap hidden" id="pageWrap">
+            <canvas id="pdfCanvas"></canvas>
+            <div class="page-shadow"></div>
+          </div>
+          <div class="loading hidden" id="loading"><span></span><strong>Rendering page…</strong></div>
+        </div>
+        <footer class="statusbar">
+          <span id="statusText">Ready</span>
+          <span>Runs locally in your browser • No upload required</span>
+        </footer>
+      </section>
+    </main>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
