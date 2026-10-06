@@ -171,5 +171,6 @@ function wire(){
   });
   if(localStorage.getItem("docuv_light")==="1")document.body.classList.add("light");
 }
+if("serviceWorker" in navigator)navigator.serviceWorker.register("./sw.js").catch(()=>{});
 if("launchQueue" in window)window.launchQueue.setConsumer(async p=>{const f=p.files?.[0];if(f)loadFile(await f.getFile())});
 wire();updateToolbar();setStatus("Ready");
