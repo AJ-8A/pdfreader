@@ -1,0 +1,23 @@
+{
+  "name":"DocuView — Document Reader",
+  "short_name":"DocuView",
+  "id":"/pdfreader/",
+  "start_url":"/pdfreader/",
+  "scope":"/pdfreader/",
+  "display":"standalone",
+  "background_color":"#070a0d",
+  "theme_color":"#090d12",
+  "description":"A private browser document reader for PDF, Word and Excel files.",
+  "icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}],
+  "file_handlers":[{
+    "action":"/pdfreader/",
+    "accept":{
+      "application/pdf":[".pdf"],
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document":[".docx"],
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":[".xlsx"],
+      "application/vnd.ms-excel":[".xls"],
+      "text/csv":[".csv"],
+      "text/plain":[".txt"]
+    }
+  }]
+}
