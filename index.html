@@ -23,7 +23,7 @@
         <button class="toolbar-btn" id="openButton" type="button">＋ Open document</button>
         <button class="icon-btn" id="themeButton" type="button" title="Toggle theme">◐</button>
       </div>
-      <input id="fileInput" type="file" accept=".pdf,application/pdf" hidden>
+      <input id="fileInput" type="file" accept=".pdf,.docx,.xlsx,.xls,.csv,.txt,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,text/csv,text/plain" hidden>
     </header>
 
     <main class="workspace">
@@ -75,6 +75,8 @@
             <canvas id="pdfCanvas"></canvas>
             <div class="page-shadow"></div>
           </div>
+          <article class="office-view hidden" id="officeView"></article>
+          <div class="sheet-tabs hidden" id="sheetTabs"></div>
           <div class="loading hidden" id="loading"><span></span><strong>Rendering page…</strong></div>
         </div>
         <footer class="statusbar">
@@ -85,6 +87,8 @@
     </main>
   </div>
   <div class="toast" id="toast"></div>
+  <script src="https://cdn.jsdelivr.net/npm/mammoth@1.12.2/mammoth.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script type="module" src="app.js"></script>
 </body>
 </html>
